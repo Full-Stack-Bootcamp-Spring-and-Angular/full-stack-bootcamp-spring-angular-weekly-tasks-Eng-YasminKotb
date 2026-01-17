@@ -4,7 +4,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        ApplicationContext container = new ClassPathXmlApplicationContext("applicationContext.xml");
+        ApplicationContext container = new ClassPathXmlApplicationContext("config/applicationContext.xml");
 
         // retrieve bean
         Shape circle1 = container.getBean("myCircle", Shape.class);
