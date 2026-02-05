@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
 import java.time.temporal.ChronoUnit;
+import java.util.HashMap;
+import java.util.Map;
 
 import static java.lang.Math.abs;
 
@@ -37,18 +39,32 @@ public class HomeController
         String day= request.getParameter("day");
 
 
+        Map<String, Integer> differences= calculateDateDifferences(year, month, day);
 
-        //When you get data from an HTML form in an MVC application, it comes as a String by default.
-        int yearsDiff=LocalDate.now().getYear() - Integer.parseInt(year);
-        int monthsDiff=Math.abs(LocalDate.now().getMonthValue() - Integer.parseInt(month));
-        int daysDiff=Math.abs(LocalDate.now().getDayOfMonth() - Integer.parseInt(day));
 
         //adding data to the model
-        model.addAttribute("years" , yearsDiff);
-        model.addAttribute("months" , monthsDiff);
-        model.addAttribute("days" , daysDiff);
+        model.addAttribute("years" ,differences.get("years") );
+        model.addAttribute("months" , differences.get("months"));
+        model.addAttribute("days" , differences.get("days"));
 
         //return the view with model
         return "resultPage";
     }
+
+    private Map<String, Integer> calculateDateDifferences(String yearStr, String monthStr, String dayStr){
+
+        //When you get data from an HTML form in an MVC application, it comes as a String by default.
+        int yearsDiff=LocalDate.now().getYear() - Integer.parseInt(yearStr);
+        int monthsDiff=Math.abs(LocalDate.now().getMonthValue() - Integer.parseInt(monthStr));
+        int daysDiff=Math.abs(LocalDate.now().getDayOfMonth() - Integer.parseInt(dayStr));
+
+        Map<String, Integer> differences= new HashMap<>();
+        differences.put("years", yearsDiff);
+        differences.put("months", monthsDiff);
+        differences.put("days", daysDiff);
+
+        return differences;
+    }
+
+
 }
