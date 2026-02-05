@@ -1,6 +1,18 @@
 <html>
 <head>
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            /* Remove spinner arrows from number inputs */
+            input[type=number]::-webkit-inner-spin-button,
+            input[type=number]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+
+            input[type=number] {
+                -moz-appearance: textfield; /* Firefox */
+            }
+        </style>
 </head>
 
 <body>
@@ -10,15 +22,15 @@
         <form action="${pageContext.request.contextPath}/processForm" method="post">
 
             <label>Year:</label>
-            <input type="number" name="year" class="form-control" required>
+            <input type="number" name="year" class="form-control" style="max-width: 200px;" required>
             <br>
 
             <label>Month:</label>
-            <input type="number" name="month" class="form-control" min="1" max="12" required>
+            <input type="number" name="month" class="form-control" style="max-width: 200px;" required>
             <br>
 
             <label>Day:</label>
-            <input type="number" name="day" class="form-control" min="1" max="31" required>
+            <input type="number" name="day" class="form-control" style="max-width: 200px;" required>
             <br>
 
             <button type="submit" class="btn btn-primary">Calculate</button>
