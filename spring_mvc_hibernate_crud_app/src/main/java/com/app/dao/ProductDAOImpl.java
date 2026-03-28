@@ -2,6 +2,7 @@ package com.app.dao;
 
 import com.app.model.Product;
 import com.app.model.ProductDetails;
+import com.app.rest.dto.ProductResponseDTO;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -20,12 +21,12 @@ public class ProductDAOImpl implements ProductDAO {
 
     //Get
     @Override
-    public List<Product> getAllProducts() {
+    public List<ProductResponseDTO> getAllProducts() {
         Query query = null;
         String hql = "FROM Product";
         Session session = sessionFactory.getCurrentSession();
         try {
-            return (List<Product>) session.createQuery(hql).list();
+            return (List<ProductResponseDTO>) session.createQuery(hql).list();
 
         } catch (Exception e) {
             throw new RuntimeException("Failed fetching", e);

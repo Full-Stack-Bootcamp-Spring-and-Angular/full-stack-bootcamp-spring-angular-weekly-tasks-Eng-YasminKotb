@@ -4,6 +4,7 @@ import com.app.dao.ProductDAO;
 import com.app.dao.ProductDAOImpl;
 import com.app.model.Product;
 import com.app.model.ProductDetails;
+import com.app.rest.dto.ProductResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +21,7 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public List<Product> getAllProducts() {
+    public List<ProductResponseDTO> getAllProducts() {
         return productDAO.getAllProducts();
     }
 
