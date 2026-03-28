@@ -2,6 +2,7 @@ package com.app.dao;
 
 import com.app.model.Product;
 import com.app.model.ProductDetails;
+import com.app.rest.dto.ProductResponseDTO;
 
 import java.util.List;
 
@@ -14,5 +15,5 @@ public interface ProductDAO {
 
     Product update(Product product); //ala3l
 
-    List<Product> getAllProducts();//done
+    List<ProductResponseDTO> getAllProducts();//done
 }
