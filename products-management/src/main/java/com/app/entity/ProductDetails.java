@@ -1,14 +1,16 @@
 package com.app.entity;
 
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
 
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
-import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
+
 
 import java.util.Date;
 
@@ -22,22 +24,17 @@ public class ProductDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotNull(message = "Product's name can not be empty!")
-    @Size(min = 2, max = 15)
+
     @Column(name = "product_name")
     private String productName;
 
-    @NotNull(message = "Manufacturer can not be empty!")
-    @Size(min = 2, max = 15)
     @Column(name = "manufacturer")
     private String manufacturer;
 
 
     @Column(name = "image_path")
-    @NotNull(message = "Product's image can not be empty!")
     private String imagePath;
 
-    @Min(value = 1, message = "Price must be positive")
     @Column(name = "price")
     private double price;
 
@@ -45,9 +42,6 @@ public class ProductDetails {
     @Column(name = "available")
     private boolean available;
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-    @Temporal(TemporalType.DATE)
-    @NotNull(message = "Expiration Date can not be empty!")
     @Column(name = "expiration_date")
     private Date expirationDate;
 }
